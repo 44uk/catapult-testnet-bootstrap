@@ -95,3 +95,16 @@ services:
       default:
         ipv4_address: 172.20.0.9
 
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+    - "80:80"
+    - "3001:443"
+    restart: always
+    environment:
+      DOMAINS: 'catapult.local -> http://rest-gateway:3000'
+      STAGE: local
+    volumes:
+    - ./ssl-certs:/var/lib/https-portal:rw
+    depends_on:
+    - rest-gateway
