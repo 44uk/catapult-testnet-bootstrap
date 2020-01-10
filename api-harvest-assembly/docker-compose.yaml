@@ -104,6 +104,8 @@ services:
     environment:
       DOMAINS: 'catapult.local -> http://rest-gateway:3000'
       STAGE: local
+      # DOMAINS: 'your-own-host.example.com -> http://rest-gateway:3000'
+      # STAGE: production
     volumes:
     - ./ssl-certs:/var/lib/https-portal:rw
     depends_on:
